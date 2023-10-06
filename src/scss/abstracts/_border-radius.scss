@@ -1,0 +1,9 @@
+@use "tokens" as *;
+
+.border-radius-1 {
+  border-radius: $border-radius-1;
+}
+
+.border-radius-2 {
+  border-radius: $border-radius-2;
+}

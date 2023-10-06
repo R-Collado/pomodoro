@@ -1,0 +1,23 @@
+@font-face {
+  font-display: swap;
+  font-family: "Satoshi";
+  font-weight: 400;
+  src: url("../../assets/fonts/satoshi-regular-webfont.woff2") format("woff2"),
+    url("../../assets/fonts/satoshi-regular-webfont.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Satoshi";
+  font-weight: 700;
+  src: url("../../assets/fonts/satoshi-bold-webfont.woff2") format("woff2"),
+    url("../../assets/fonts/satoshi-bold-webfont.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Lora";
+  font-weight: 400;
+  src: url("../../assets/fonts/lora-variablefont_wght-webfont.woff2") format("woff2"),
+      url("../../assets/fonts/lora-variablefont_wght-webfont.woff") format("woff"),
+}
