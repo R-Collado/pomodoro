@@ -1,0 +1,25 @@
+@use '../abstracts/' as *;
+
+.primary-nav {
+     justify-content: space-between;
+     position: fixed;
+
+    width: min(100% - var(--padding), var(--max-width));
+
+    & ul {
+    gap: $size-6;
+    list-style: none;
+
+    & li button {
+        background-color: transparent;
+        border: none;
+        color: $color-neutral-500;
+        transition: color 350ms ease-out;
+
+            &:hover {
+                color: $color-neutral-100;
+
+            }
+        }
+    }  
+}

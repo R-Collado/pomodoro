@@ -30,6 +30,8 @@ $-clr-turquoise-900: hsl(165, 11%, 7%);
 $colors: (
   "neutral": (
     "100": $-clr-white,
+    "500": $-clr-grey-500,
+    "800": $-clr-grey-900
   ),
   "accent": (
     "300": $-clr-orange-300,
@@ -46,6 +48,9 @@ $colors: (
 
 // contextual color tokens
 $color-neutral-100: var(--neutral-100);
+$color-neutral-500: var(--neutral-500);
+$color-neutral-800: var(--neutral-800);
+
 $color-accent-300: var(--accent-300);
 $color-accent-400: var(--accent-400);
 $color-accent-500: var(--accent-500);
