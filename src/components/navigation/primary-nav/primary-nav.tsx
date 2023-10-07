@@ -1,4 +1,4 @@
-import { LoginPopup } from '../login-popup/login-popup';
+// import { LoginPopup } from '../login-popup/login-popup';
 
 export const PrimaryNav = () => {
     return (
@@ -13,7 +13,7 @@ export const PrimaryNav = () => {
                         <button className="pointer">sign in</button>
                     </li>
                 </ul>
-                <LoginPopup />
+                {/* <LoginPopup /> */}
             </nav>
         </div>
     );
