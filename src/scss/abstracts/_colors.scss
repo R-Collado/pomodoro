@@ -6,6 +6,7 @@ $-clr-black: hsl(0, 0%, 0%);
 
 // grey
 $-clr-grey-500: hsl(0, 0%, 51%);
+$-clr-grey-700: hsl(180, 1%, 13%);
 $-clr-grey-900: hsl(353, 17%, 9%);
 
 // orange
@@ -31,6 +32,7 @@ $colors: (
   "neutral": (
     "100": $-clr-white,
     "500": $-clr-grey-500,
+    "700": $-clr-grey-700,
     "800": $-clr-grey-900
   ),
   "accent": (
@@ -49,6 +51,7 @@ $colors: (
 // contextual color tokens
 $color-neutral-100: var(--neutral-100);
 $color-neutral-500: var(--neutral-500);
+$color-neutral-700: var(--neutral-700);
 $color-neutral-800: var(--neutral-800);
 
 $color-accent-300: var(--accent-300);

@@ -7,13 +7,20 @@ export const PrimaryNav = () => {
                 <p className="logo">pm.</p>
                 <ul className="flex">
                     <li>
-                        <button className="pointer">log in</button>
+                        {/* <button
+                                type="button"
+                                onClick={() => navigateTo('/login')}
+                            >
+                                Go home
+                            </button>{' '} */}
+                        {/* <a href="/login" className="pointer">
+                            log in
+                        </a> */}
                     </li>
                     <li>
                         <button className="pointer">sign in</button>
                     </li>
                 </ul>
-                {/* <LoginPopup /> */}
             </nav>
         </div>
     );

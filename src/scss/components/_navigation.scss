@@ -6,20 +6,28 @@
 
     width: min(100% - var(--padding), var(--max-width));
 
-    & ul {
-    gap: $size-6;
-    list-style: none;
+    & .logo {
+        color: $color-neutral-100;
+        font-family: $ff-serif;
+        font-size: $size-6;
+        text-decoration: none;
+    }
 
-    & li button {
-        background-color: transparent;
-        border: none;
-        color: $color-neutral-500;
-        transition: color 350ms ease-out;
+    & ul {
+        gap: $size-6;
+        list-style: none;
+
+        & li a {
+            background-color: transparent;
+            border: none;
+            color: $color-neutral-500;
+            text-decoration: none;
+            transition: color 350ms ease-out;
 
             &:hover {
                 color: $color-neutral-100;
 
             }
         }
-    }  
+    }     
 }
