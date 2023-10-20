@@ -1,20 +1,27 @@
 import { useState } from 'react';
 
-export const LoginForm = () => {
+type ChildProps = {
+    onSubmitEvent: (event: any) => void;
+};
+
+export const LoginForm: React.FC<ChildProps> = (props: ChildProps) => {
     const [showPassword, setShowPassword] = useState(false);
     const togglePasswordInputType = () => {
         setShowPassword(!showPassword);
     };
 
-    const saveFormAndRedirect = (e: any) => {
-        e.preventDefault();
-        window.location.href = '/';
-    };
+    // const saveFormAndRedirect = (e: any) => {
+    //     e.preventDefault();
+    //     window.location.href = '/';
+    // };
 
     return (
         <div className="login">
             <h2>login</h2>
-            <form className="flex clr-neutral-500">
+            <form
+                className="flex clr-neutral-500"
+                onSubmit={props.onSubmitEvent}
+            >
                 <label htmlFor="loginEmail">email address</label>
                 <input
                     className="form-input | margin-block-end-6"
@@ -43,7 +50,6 @@ export const LoginForm = () => {
                 <button
                     className="button | clr-neutral-500 bg-neutral-700 grid place-items-center margin-block-start-6"
                     data-type="rounded"
-                    onClick={saveFormAndRedirect}
                 >
                     login
                 </button>

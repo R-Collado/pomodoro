@@ -1,17 +1,17 @@
-// import { useCallback } from 'react';
+import { useCallback } from 'react';
 import { User } from '../../interfaces/user.interface';
 import { LoginForm } from './login-form/login-form';
 import { RegisterForm } from './register-form/register-form';
 
 export const UserForms = () => {
-    // const getUserFromLocalStorage = (): User | null => {
-    //     const storedUser = localStorage.getItem('user');
-    //     if (storedUser) {
-    //         return JSON.parse(storedUser);
-    //     } else {
-    //         return null;
-    //     }
-    // };
+    const getUserFromLocalStorage = (): User | null => {
+        const storedUser = localStorage.getItem('user');
+        if (storedUser) {
+            return JSON.parse(storedUser);
+        } else {
+            return null;
+        }
+    };
 
     const registerUser = (event: any) => {
         event.preventDefault();
@@ -29,20 +29,54 @@ export const UserForms = () => {
         };
 
         localStorage.setItem('user', JSON.stringify(user));
-        window.location.href = '/login';
+        window.location.href = '/';
         return user;
     };
 
-    const checkIfUserIsRegistered = (username: string, email: string) => {
-        const storedUser = JSON.parse(localStorage.getItem('user') || '{}');
-        if (storedUser.username === username) {
-            console.log('that username is already registered');
-            return true;
-        }
+    const loginUser = (event: any) => {
+        event.preventDefault();
 
-        if (storedUser.email === email) {
-            console.log('that email is already registered');
-            return true;
+        const username = event.target.loginUsername.value;
+        const password = event.target.loginPassword.value;
+        const email = event.target.loginEmail.value;
+
+        if (!checkIfUserIsRegistered('login', email, password)) {
+            console.log(
+                "that combination of email and password doesn't match with anyone on our database"
+            );
+            return;
+        }
+        const storedUser = JSON.parse(localStorage.getItem('user') || '{}');
+        storedUser.isLoggedIn = true;
+        localStorage.setItem('user', JSON.stringify(storedUser));
+        window.location.href = '/';
+    };
+
+    const checkIfUserIsRegistered = (
+        mode: string,
+        username?: string,
+        email?: string,
+        password?: string
+    ) => {
+        const storedUser = JSON.parse(localStorage.getItem('user') || '{}');
+
+        if (mode === 'register') {
+            if (storedUser.username === username) {
+                console.log('that username is already registered');
+                return true;
+            }
+
+            if (storedUser.email === email) {
+                console.log('that email is already registered');
+                return true;
+            }
+        } else if (mode === 'login') {
+            if (storedUser.email != email || storedUser.password != password) {
+                console.log(
+                    "that combination of email and password doesn't match with anyone on our database"
+                );
+                return false;
+            }
         }
 
         return false;
@@ -52,7 +86,7 @@ export const UserForms = () => {
         <div className="user-forms">
             <div className="container | flex" data-type="narrow">
                 <RegisterForm onSubmitEvent={registerUser} />
-                <LoginForm />
+                <LoginForm onSubmitEvent={loginUser} />
             </div>
         </div>
     );

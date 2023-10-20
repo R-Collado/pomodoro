@@ -4,13 +4,34 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 import { Home } from './components/home/home';
 import { UserForms } from './pages/user-forms/user-forms';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Timers } from './pages/timers/timers';
 
+import UserImg from './assets/imgs/user_img.png';
 import { LogoutIcon } from './assets/svgs/logout';
+import { SettingsIcon } from './assets/svgs/settings';
 
 function App() {
-    const [isUserLoggedIn, setIsUserLoggedIn] = useState(true);
+    const [isUserLoggedIn, setIsUserLoggedIn] = useState(
+        JSON.parse(localStorage.getItem('user') || '{}').isLoggedIn
+    );
+
+    const logOutUser = () => {
+        const storedUser = JSON.parse(localStorage.getItem('user') || '{}');
+        storedUser.isLoggedIn = false;
+        localStorage.setItem('user', JSON.stringify(storedUser));
+        setIsUserLoggedIn(false);
+    };
+
+    const getIfUserIsLoggedIn = () => {
+        const storedUser = JSON.parse(localStorage.getItem('user') || '{}');
+        setIsUserLoggedIn(storedUser.isLoggedIn);
+    };
+
+    useEffect(() => {
+        getIfUserIsLoggedIn();
+        console.log(isUserLoggedIn);
+    }, []);
 
     const username = JSON.parse(localStorage.getItem('user') || '{}').username;
 
@@ -24,13 +45,20 @@ function App() {
                         </Link>
                         {isUserLoggedIn ? (
                             <ul className="flex | align-center">
-                                <p>{username}</p>
+                                <img
+                                    className="primary-nav__user-img"
+                                    src={UserImg}
+                                />
+                                <p className="primary-nav__user-name">
+                                    {username}
+                                </p>
+                                <button className="primary-nav__icon">
+                                    <SettingsIcon />
+                                </button>
                                 <button
-                                    className="button"
+                                    className="primary-nav__icon"
                                     data-type="transparent"
-                                    onClick={() =>
-                                        setIsUserLoggedIn(!isUserLoggedIn)
-                                    }
+                                    onClick={() => logOutUser()}
                                 >
                                     <LogoutIcon />
                                 </button>
