@@ -5,7 +5,6 @@ export const Home = () => {
         <>
             <header>
                 <Hero />
-                <h1>Just trying</h1>
             </header>
         </>
     );

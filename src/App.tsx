@@ -5,6 +5,10 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { Home } from './components/home/home';
 import { UserForms } from './pages/user-forms/user-forms';
 import { useState } from 'react';
+import { Timers } from './pages/timers/timers';
+
+import { LogoutIcon } from './assets/svgs/logout';
+
 function App() {
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(true);
 
@@ -13,7 +17,7 @@ function App() {
     return (
         <Router>
             <header>
-                <div className="container">
+                <div className="container" data-type="wide">
                     <nav className="primary-nav | flex padding-block-6">
                         <Link className="logo" to="/">
                             pm.
@@ -22,11 +26,13 @@ function App() {
                             <ul className="flex | align-center">
                                 <p>{username}</p>
                                 <button
+                                    className="button"
+                                    data-type="transparent"
                                     onClick={() =>
                                         setIsUserLoggedIn(!isUserLoggedIn)
                                     }
                                 >
-                                    log out
+                                    <LogoutIcon />
                                 </button>
                             </ul>
                         ) : (
@@ -43,6 +49,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home />}></Route>
                     <Route path="/login" element={<UserForms />}></Route>
+                    <Route path="/timers" element={<Timers />}></Route>
                 </Routes>
                 {/* <Home /> */}
             </main>

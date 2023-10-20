@@ -3,7 +3,7 @@ import { User } from '../../interfaces/user.interface';
 import { LoginForm } from './login-form/login-form';
 import { RegisterForm } from './register-form/register-form';
 
-export const UserForms = (isUserLoggedIn: boolean) => {
+export const UserForms = () => {
     const getUserFromLocalStorage = (): User | null => {
         const storedUser = localStorage.getItem('user');
         if (storedUser) {

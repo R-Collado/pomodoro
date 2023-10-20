@@ -1,0 +1,59 @@
+@use "../abstracts/" as *;
+
+.timer-list {
+
+    & .timer-item {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 0;
+
+        & .timer-item__minutes {
+            font-size: 3rem;
+            font-weight: 300;
+
+            & span {
+                font-size: 1rem;
+                margin-left: -.5rem;
+            }
+        }
+
+        & .timer-item__description {
+            margin-bottom: 1.25rem;
+            margin-top: .75rem;
+        }
+
+        & .timer-item__name {
+            translate: -10px -10px;
+        }
+    }
+
+    & .custom-timers {
+        grid-column: 1 / 5;
+
+        & .custom-timers__heading {
+            font-size: $size-7;
+        }
+
+        & .custom-timers__preset-description {
+            align-self: center;
+        }
+
+        & .custom-timers__preset {
+
+            & .custom-timers__preset__name {
+                border-bottom: 1px solid $color-neutral-100;
+                text-align: center;
+            }
+
+            & .custom-timers__preset__feature-list {
+                
+                & .custom-timers__preset__feature-list__feature {
+                    
+                    & + * {
+                        margin-top: $size-2;
+                    }
+                }
+            }
+        }
+    }
+}

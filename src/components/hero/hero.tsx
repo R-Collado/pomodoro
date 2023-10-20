@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export const Hero = () => {
     return (
         <div className="hero | text-center">
@@ -8,13 +10,14 @@ export const Hero = () => {
                 manage your time to work in intervals
             </p>
             <div className="hero__buttons | flex margin-block-start-10">
-                <button
+                <Link
+                    to="/timers"
                     className="button "
                     data-type="primary"
                     data-shape="pill"
                 >
                     go to timers
-                </button>
+                </Link>
                 <button
                     className="button"
                     data-type="secondary"

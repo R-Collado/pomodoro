@@ -35,6 +35,29 @@
     }
   }
 
+  &[data-type="transparent"] {
+    background-color: transparent;
+    color: $color-neutral-100;
+    opacity: 0.5;
+
+    &:is(:hover, :focus) {
+      opacity: 1;
+    }
+  }
+
+  &[data-type="timer-select"] {
+    align-items: center;
+    background-color: $color-neutral-800;
+    color: $color-neutral-100;
+    display: grid;
+    opacity: .5;
+
+    &:is(:hover, :focus) {
+      opacity: 1;
+    }
+    
+  }
+
   &[data-shape="pill"] {
     border-radius: 100vw;
   }
