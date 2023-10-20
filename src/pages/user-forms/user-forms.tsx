@@ -4,14 +4,14 @@ import { LoginForm } from './login-form/login-form';
 import { RegisterForm } from './register-form/register-form';
 
 export const UserForms = () => {
-    const getUserFromLocalStorage = (): User | null => {
-        const storedUser = localStorage.getItem('user');
-        if (storedUser) {
-            return JSON.parse(storedUser);
-        } else {
-            return null;
-        }
-    };
+    // const getUserFromLocalStorage = (): User | null => {
+    //     const storedUser = localStorage.getItem('user');
+    //     if (storedUser) {
+    //         return JSON.parse(storedUser);
+    //     } else {
+    //         return null;
+    //     }
+    // };
 
     const registerUser = (event: any) => {
         event.preventDefault();
@@ -47,13 +47,6 @@ export const UserForms = () => {
 
         return false;
     };
-
-    const saveUser = useCallback((event: any) => {
-        event.preventDefault();
-        console.log('Button clicked in child component');
-
-        // Handle the event logic here
-    }, []);
 
     return (
         <div className="user-forms">
