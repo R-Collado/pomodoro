@@ -1,7 +1,13 @@
 @use "../abstracts/" as *;
 
-.grid-auto-fit {
+.even-columns {
   display: grid;
-  grid-gap: var(--grid-gap, $grid-gap);
-  grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+  gap: var(--grid-gap, $grid-gap);
+
+  @for $i from 2 through 12 {
+    &.cols-#{$i} {
+        display: grid;
+        grid-template-columns: repeat($i, 1fr);
+      }
+  }
 }
