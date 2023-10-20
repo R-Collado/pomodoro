@@ -12,7 +12,7 @@ import { LogoutIcon } from './assets/svgs/logout';
 function App() {
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(true);
 
-    const username = JSON.parse(localStorage.getItem('user') || '').username;
+    const username = JSON.parse(localStorage.getItem('user') || '{}').username;
 
     return (
         <Router>
