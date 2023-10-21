@@ -1,0 +1,5 @@
+@use '../abstracts/' as *;
+
+.focus {
+    padding-block: $section-padding-block;
+}
