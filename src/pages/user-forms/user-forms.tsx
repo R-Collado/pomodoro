@@ -1,18 +1,8 @@
-import { useCallback } from 'react';
 import { User } from '../../interfaces/user.interface';
 import { LoginForm } from './login-form/login-form';
 import { RegisterForm } from './register-form/register-form';
 
 export const UserForms = () => {
-    const getUserFromLocalStorage = (): User | null => {
-        const storedUser = localStorage.getItem('user');
-        if (storedUser) {
-            return JSON.parse(storedUser);
-        } else {
-            return null;
-        }
-    };
-
     const registerUser = (event: any) => {
         event.preventDefault();
         const username = event.target.registerUsername.value;
@@ -36,7 +26,6 @@ export const UserForms = () => {
     const loginUser = (event: any) => {
         event.preventDefault();
 
-        const username = event.target.loginUsername.value;
         const password = event.target.loginPassword.value;
         const email = event.target.loginEmail.value;
 
