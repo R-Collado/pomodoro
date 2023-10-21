@@ -10,6 +10,7 @@ import { Timers } from './pages/timers/timers';
 import UserImg from './assets/imgs/user_img.png';
 import { LogoutIcon } from './assets/svgs/logout';
 import { SettingsIcon } from './assets/svgs/settings';
+import { Focus } from './pages/focus/focus';
 
 function App() {
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(
@@ -45,13 +46,16 @@ function App() {
                         </Link>
                         {isUserLoggedIn ? (
                             <ul className="flex | align-center">
-                                <img
-                                    className="primary-nav__user-img"
-                                    src={UserImg}
-                                />
-                                <p className="primary-nav__user-name">
-                                    {username}
-                                </p>
+                                <div className="primary-nav__user-info | flex align-center pointer">
+                                    <img
+                                        className="primary-nav__user-info__img"
+                                        src={UserImg}
+                                    />
+                                    <p className="primary-nav__user-info__name">
+                                        {username}
+                                    </p>
+                                </div>
+
                                 <button className="primary-nav__icon">
                                     <SettingsIcon />
                                 </button>
@@ -78,6 +82,7 @@ function App() {
                     <Route path="/" element={<Home />}></Route>
                     <Route path="/login" element={<UserForms />}></Route>
                     <Route path="/timers" element={<Timers />}></Route>
+                    <Route path="/focus" element={<Focus />}></Route>
                 </Routes>
                 {/* <Home /> */}
             </main>
