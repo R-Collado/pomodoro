@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { CustomTimers } from './custom-timers/custom-timers';
 
 export const Timers = () => {
@@ -11,9 +12,13 @@ export const Timers = () => {
                     <p className="timer-item__description">
                         perfect for a short work session or a simple task.
                     </p>
-                    <button className="button" data-type="timer-select">
+                    <Link
+                        className="button"
+                        data-type="timer-select"
+                        to="/focus"
+                    >
                         select timer
-                    </button>
+                    </Link>
                     <p className="timer-item__name | opacity-3 margin-block-start-6">
                         default timer 1
                     </p>
@@ -26,9 +31,13 @@ export const Timers = () => {
                         for those times when you need to work a little bit
                         longer.
                     </p>
-                    <button className="button" data-type="timer-select">
+                    <Link
+                        className="button"
+                        data-type="timer-select"
+                        to="/focus"
+                    >
                         select timer
-                    </button>
+                    </Link>
                     <p className="timer-item__name | opacity-3 margin-block-start-6">
                         default timer 2
                     </p>
@@ -40,9 +49,13 @@ export const Timers = () => {
                     <p className="timer-item__description">
                         feeling stressed? take a breake in between intervals.
                     </p>
-                    <button className="button" data-type="timer-select">
+                    <Link
+                        className="button"
+                        data-type="timer-select"
+                        to="/focus"
+                    >
                         select timer
-                    </button>
+                    </Link>
                     <p className="timer-item__name | opacity-3 margin-block-start-6">
                         default timer 3
                     </p>
@@ -54,9 +67,13 @@ export const Timers = () => {
                     <p className="timer-item__description">
                         this should be perfect for a long working session.
                     </p>
-                    <button className="button" data-type="timer-select">
+                    <Link
+                        className="button"
+                        data-type="timer-select"
+                        to="/focus"
+                    >
                         select timer
-                    </button>
+                    </Link>
                     <p className="timer-item__name | opacity-3 margin-block-start-6">
                         default timer 4
                     </p>
