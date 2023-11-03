@@ -1,18 +1,22 @@
 import ReverseClock from './components/clock';
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { Timer } from '../../interfaces/timer.interface';
 
 export const Focus = () => {
-    let targetMinutes: number = 1;
-
     const [isClockRunning, setIsClockRunning] = useState(false);
     const [timeProgress, setTimeProgress] = useState(0);
+    const { timerName } = useParams();
+    const timer: Timer = JSON.parse(
+        localStorage.getItem(timerName || '') || '{}'
+    );
 
     const circularProgress = document.querySelector(
         '.circular-progress'
     ) as HTMLElement;
 
     let progressedTime: number;
-    const totalSeconds: number = targetMinutes * 60;
+    const totalSeconds: number = timer.targetMinutes * 60;
     const progressDegrees: number = 360 / totalSeconds;
 
     useEffect(() => {
@@ -56,7 +60,7 @@ export const Focus = () => {
                 <div>
                     <div className="circular-progress">
                         <ReverseClock
-                            targetMinutes={targetMinutes}
+                            targetMinutes={timer.targetMinutes}
                             isClockRunning={isClockRunning}
                             timeProgress={timeProgress}
                         />
