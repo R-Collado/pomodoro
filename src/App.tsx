@@ -81,7 +81,7 @@ function App() {
                     <Route path="/" element={<Home />}></Route>
                     <Route path="/login" element={<UserForms />}></Route>
                     <Route path="/timers" element={<Timers />}></Route>
-                    <Route path="/focus" element={<Focus />}></Route>
+                    <Route path="/focus/:timerName" element={<Focus />}></Route>
                 </Routes>
                 {/* <Home /> */}
             </main>
