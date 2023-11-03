@@ -19,7 +19,7 @@ export const Hero = () => {
                     go to timers
                 </Link>
                 <Link
-                    to="/focus/fast-start"
+                    to="/focus/fast_start"
                     className="button"
                     data-type="secondary"
                     data-shape="pill"
