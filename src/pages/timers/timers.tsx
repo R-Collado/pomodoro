@@ -15,7 +15,7 @@ export const Timers = () => {
                     <Link
                         className="button"
                         data-type="timer-select"
-                        to="/focus"
+                        to="/focus/default_timer_1"
                     >
                         select timer
                     </Link>
@@ -34,7 +34,7 @@ export const Timers = () => {
                     <Link
                         className="button"
                         data-type="timer-select"
-                        to="/focus"
+                        to="/focus/default_timer_2"
                     >
                         select timer
                     </Link>
@@ -52,7 +52,7 @@ export const Timers = () => {
                     <Link
                         className="button"
                         data-type="timer-select"
-                        to="/focus"
+                        to="/focus/default_timer_3"
                     >
                         select timer
                     </Link>
@@ -70,7 +70,7 @@ export const Timers = () => {
                     <Link
                         className="button"
                         data-type="timer-select"
-                        to="/focus"
+                        to="/focus/default_timer_4"
                     >
                         select timer
                     </Link>
