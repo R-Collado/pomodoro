@@ -2,4 +2,27 @@
 
 .focus {
     padding-block: $section-padding-block;
+
+    & .circular-progress {
+        align-items: center;
+        background: conic-gradient($color-primary-400, 0deg, #ededed 0deg);
+        border-radius: 50%;
+        display: flex;
+        height: 250px;
+        justify-content: center;
+        position: relative;
+        transition: background 250ms ease-out;
+        width: 250px;
+        z-index: 1;
+
+        &::before {
+            background: $color-primary-900;
+            border-radius: 50%;
+            content: "";
+            height: 210px;
+            position: absolute;
+            width: 210px;
+            z-index: -1;
+        }
+    } 
 }
