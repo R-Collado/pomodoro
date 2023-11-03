@@ -3,9 +3,14 @@ import React, { useState, useEffect } from 'react';
 type ReverseClockProps = {
     targetMinutes: number;
     isClockRunning: boolean;
+    timeProgress: number;
 };
 
-const ReverseClock = ({ targetMinutes, isClockRunning }: ReverseClockProps) => {
+const ReverseClock = ({
+    targetMinutes,
+    isClockRunning,
+    timeProgress,
+}: ReverseClockProps) => {
     const totalSeconds = targetMinutes * 60;
 
     const calculateTimeRemaining = (totalSeconds: number) => {
@@ -17,6 +22,12 @@ const ReverseClock = ({ targetMinutes, isClockRunning }: ReverseClockProps) => {
             seconds,
         };
     };
+
+    useEffect(() => {
+        if (timeProgress === 0) {
+            setTimeRemaining(calculateTimeRemaining(targetMinutes * 60));
+        }
+    }, [timeProgress]);
 
     useEffect(() => {
         let clockInterval: any;
@@ -40,6 +51,7 @@ const ReverseClock = ({ targetMinutes, isClockRunning }: ReverseClockProps) => {
                 });
             }, 1000);
         }
+
         return () => clearInterval(clockInterval);
     }, [isClockRunning]);
 

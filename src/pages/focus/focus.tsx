@@ -2,7 +2,7 @@ import ReverseClock from './components/clock';
 import { useEffect, useState } from 'react';
 
 export const Focus = () => {
-    const targetMinutes: number = 1;
+    let targetMinutes: number = 1;
 
     const [isClockRunning, setIsClockRunning] = useState(false);
     const [timeProgress, setTimeProgress] = useState(0);
@@ -12,7 +12,6 @@ export const Focus = () => {
     ) as HTMLElement;
 
     let progressedTime: number;
-    let progress: number;
     const totalSeconds: number = targetMinutes * 60;
     const progressDegrees: number = 360 / totalSeconds;
 
@@ -43,7 +42,6 @@ export const Focus = () => {
 
     const stopClock = () => {
         setIsClockRunning(false);
-        clearInterval(progress);
     };
 
     const resetClock = () => {
@@ -60,6 +58,7 @@ export const Focus = () => {
                         <ReverseClock
                             targetMinutes={targetMinutes}
                             isClockRunning={isClockRunning}
+                            timeProgress={timeProgress}
                         />
                     </div>
                 </div>
