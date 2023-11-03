@@ -31,7 +31,6 @@ function App() {
 
     useEffect(() => {
         getIfUserIsLoggedIn();
-        console.log(isUserLoggedIn);
     }, []);
 
     const username = JSON.parse(localStorage.getItem('user') || '{}').username;
