@@ -40,10 +40,11 @@
             }
 
             & .primary-nav__user-info__img {
+                aspect-ratio: 1;
                 border-radius: 50%;
-                max-width: 2rem;
                 opacity: .5;
                 transition: opacity 250ms ease-out;
+                width: 2rem;
 
             }
 
