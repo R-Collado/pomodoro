@@ -1,0 +1,76 @@
+@use '../abstracts/' as *;
+
+.dialog {
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 1000;
+
+    .dialog__overlay {
+        background-color: $color-primary-900;
+        height: 100%;
+        left: 0;
+        opacity: 0.8;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: -1;
+    }
+
+    .dialog__content {
+        background-color: $color-neutral-700;
+        left: 50%;
+        padding: 2rem 2rem;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        
+        & .dialog__header {
+            font-size: $size-6;
+            margin-bottom: 1rem;
+        }
+
+        & .dialog__form {
+
+            & .dialog__form__input__group {
+                display: flex;
+                flex-direction: column;
+
+                & + * {
+                    margin-top: 1rem;
+                }
+
+                & .dialog__form__label {
+                    color: $color-neutral-500;
+                }
+
+                & .dialog__form__input,
+                & .dialog__form__textarea {
+                    background: transparent;
+                    border: 1px solid $color-neutral-500;
+                    border-radius: 5px;
+                    outline: none !important;
+                    transition: border-color 250ms ease-out;
+
+                    &:focus {
+                        border-color: $color-neutral-100;
+                    }
+                }
+            }
+
+           
+        }
+
+        & .dialog__profile-info {
+            
+            & .dialog__profile-info__group {
+
+                & + * {
+                    margin-top: 1rem;
+                }
+            }
+        }
+    }
+}
