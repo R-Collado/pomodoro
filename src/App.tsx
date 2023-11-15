@@ -7,10 +7,10 @@ import { UserForms } from './pages/user-forms/user-forms';
 import { useEffect, useState } from 'react';
 import { Timers } from './pages/timers/timers';
 
-import UserImg from './assets/imgs/user_img.png';
 import { LogoutIcon } from './assets/svgs/logout';
 import { SettingsIcon } from './assets/svgs/settings';
 import { Focus } from './pages/focus/focus';
+import { Settings } from './pages/settings/settings';
 
 function App() {
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(
@@ -26,6 +26,8 @@ function App() {
 
     const getIfUserIsLoggedIn = () => {
         const storedUser = JSON.parse(localStorage.getItem('user') || '{}');
+        console.log(storedUser);
+
         setIsUserLoggedIn(storedUser.isLoggedIn);
     };
 
@@ -34,7 +36,7 @@ function App() {
     }, []);
 
     const username = JSON.parse(localStorage.getItem('user') || '{}').username;
-
+    const userImg = JSON.parse(localStorage.getItem('user') || '{}').image;
     return (
         <Router>
             <header>
@@ -48,16 +50,19 @@ function App() {
                                 <div className="primary-nav__user-info | flex align-center pointer">
                                     <img
                                         className="primary-nav__user-info__img"
-                                        src={UserImg}
+                                        src={userImg}
                                     />
                                     <p className="primary-nav__user-info__name">
                                         {username}
                                     </p>
                                 </div>
 
-                                <button className="primary-nav__icon">
+                                <Link
+                                    to="/settings"
+                                    className="primary-nav__icon"
+                                >
                                     <SettingsIcon />
-                                </button>
+                                </Link>
                                 <button
                                     className="primary-nav__icon"
                                     data-type="transparent"
@@ -82,6 +87,7 @@ function App() {
                     <Route path="/login" element={<UserForms />}></Route>
                     <Route path="/timers" element={<Timers />}></Route>
                     <Route path="/focus/:timerName" element={<Focus />}></Route>
+                    <Route path="/settings" element={<Settings />}></Route>
                 </Routes>
                 {/* <Home /> */}
             </main>
