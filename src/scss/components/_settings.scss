@@ -1,0 +1,58 @@
+@use "../abstracts/" as *;
+
+.settings {
+    padding-top: $section-padding-block;
+
+    .settings__section {
+        background-color: $color-neutral-700;
+        border-radius: 10px;
+
+        &.user-settings {
+
+            header {
+                justify-content: space-between;
+
+                & .user-settings__information-button {
+                    gap: 1px;
+
+                    .information-icon {
+                        aspect-ratio: 1;
+                        height: 20px;
+                    }
+                }
+            }
+
+            & .user-settings__image-plus-socials {
+
+                & .user-settings__image {
+                    aspect-ratio: 1;
+                    border-radius: 50%;
+                    width: 75px;
+                }
+            }
+
+            & .overlay {
+                background: $color-primary-900;
+                height: 100vh;
+                left: 0;
+                opacity: 0.8;
+                position: absolute;
+                top: 0;
+                width: 100vw;
+            }
+
+            & .input-image-modal {
+                left: 50%;
+                position: absolute;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 1000;
+
+                & .buttons {
+                    margin-left: auto;
+                    margin-top: 2rem;
+                }
+            }
+        }
+    }
+}
