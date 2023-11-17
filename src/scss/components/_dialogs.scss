@@ -82,6 +82,10 @@
                     &:focus {
                         outline: none ;
                     }
+
+                     &.disabled {
+                        background: $color-neutral-700;
+                    }
                 }
             }
 
