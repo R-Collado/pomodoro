@@ -33,6 +33,18 @@
         }
 
         & .dialog__form {
+            min-width: 25rem;
+
+            & .dialog__form__double__input__group {
+                align-items: start;
+                display: flex;
+                gap: 1rem;
+
+                 & .dialog__form__input__group + * {
+                    margin-top: 0;
+                }
+            }
+
 
             & .dialog__form__input__group {
                 display: flex;
@@ -51,16 +63,33 @@
                     background: transparent;
                     border: 1px solid $color-neutral-500;
                     border-radius: 5px;
+                    color: $color-neutral-100;
                     outline: none !important;
+                    padding-left: .5em;
                     transition: border-color 250ms ease-out;
 
-                    &:focus {
+                    &:focus {  
                         border-color: $color-neutral-100;
+                    }
+                }
+
+                & .dialog__form__select {
+                    border: none;
+                    border-radius: $border-radius-3;
+                    cursor: pointer;
+                    padding-left: .5em;
+
+                    &:focus {
+                        outline: none ;
                     }
                 }
             }
 
-           
+             & .dialog__form__footer {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 2rem;             
+            }
         }
 
         & .dialog__profile-info {
