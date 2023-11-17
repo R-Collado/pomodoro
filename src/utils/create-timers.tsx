@@ -50,7 +50,16 @@ export const createDefaultTimers = () => {
     ];
 
     defaultTimers.forEach((timer) => {
-        const formattedTimerName = timer.name.replace(/ /g, '_');
+        const formattedTimerName = formatTimerName(timer.name);
         localStorage.setItem(formattedTimerName, JSON.stringify(timer));
     });
+};
+
+export const createTimer = (timer: Timer) => {
+    const formattedTimerName = formatTimerName(timer.name);
+    localStorage.setItem(formattedTimerName, JSON.stringify(timer));
+};
+
+export const formatTimerName = (timerName: string) => {
+    return timerName.replace(/ /g, '_');
 };
