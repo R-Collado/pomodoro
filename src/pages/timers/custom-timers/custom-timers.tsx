@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Dialog } from '../../../components/common/dialog/dialog';
 
-import { createTimer } from '../../../utils/create-timers';
+import { createTimer, getPreset } from '../../../utils/create-timers';
 
 export const CustomTimers = () => {
     const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -40,6 +40,23 @@ export const CustomTimers = () => {
             typeOfBreaks: e.target[5].value,
         };
         createTimer(timer);
+        closeDialog();
+    };
+
+    const usePreset = (presetIndex: number) => {
+        const presetValues = getPreset(presetIndex - 1);
+        openDialog();
+        setTimeout(() => {
+            const form = getForm();
+            form[0].value = presetValues.name;
+            form[1].value = presetValues.description;
+            form[2].value = presetValues.targetMinutes;
+            form[3].value = presetValues.alarm;
+            form[4].value = presetValues.breaks;
+            if (presetValues.breaks) setTimerHasBreaks(true);
+            else setTimerHasBreaks(false);
+            form[5].value = presetValues.typeOfBreaks;
+        }, 1);
     };
 
     const getForm = () => {
@@ -75,7 +92,9 @@ export const CustomTimers = () => {
                         no breaks
                     </li>
                 </ul>
-                <button className="button">use preset</button>
+                <button className="button" onClick={() => usePreset(1)}>
+                    use preset
+                </button>
             </div>
             <div className="custom-timers__preset">
                 <h4 className="custom-timers__preset__name">preset 2</h4>
@@ -87,7 +106,9 @@ export const CustomTimers = () => {
                         1 break
                     </li>
                 </ul>
-                <button className="button">use preset</button>
+                <button className="button" onClick={() => usePreset(2)}>
+                    use preset
+                </button>
             </div>
             <div className="custom-timers__preset">
                 <h4 className="custom-timers__preset__name">preset 3</h4>
@@ -99,7 +120,9 @@ export const CustomTimers = () => {
                         3 breaks
                     </li>
                 </ul>
-                <button className="button">use preset</button>
+                <button className="button" onClick={() => usePreset(3)}>
+                    use preset
+                </button>
             </div>
 
             {isDialogOpen && (
@@ -203,13 +226,17 @@ export const CustomTimers = () => {
                                 >
                                     {timerHasBreaks && (
                                         <>
-                                            <option>25 minutes</option>
-                                            <option>50 minutes</option>
+                                            <option value={25}>
+                                                25 minutes
+                                            </option>
+                                            <option value={50}>
+                                                50 minutes
+                                            </option>
                                         </>
                                     )}
 
                                     {!timerHasBreaks && (
-                                        <option>no intervals</option>
+                                        <option value={0}>no intervals</option>
                                     )}
                                 </select>
                             </div>
