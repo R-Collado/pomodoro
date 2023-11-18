@@ -63,3 +63,33 @@ export const createTimer = (timer: Timer) => {
 export const formatTimerName = (timerName: string) => {
     return timerName.replace(/ /g, '_');
 };
+
+const presetValues = [
+    {
+        name: '',
+        description: '',
+        targetMinutes: 25,
+        alarm: 'alarm 1',
+        breaks: false,
+        typeOfBreaks: 0,
+    },
+    {
+        name: '',
+        description: '',
+        targetMinutes: 50,
+        alarm: 'alarm 1',
+        breaks: true,
+        typeOfBreaks: 25,
+    },
+    {
+        name: '',
+        description: '',
+        targetMinutes: 90,
+        alarm: 'alarm 1',
+        breaks: true,
+        typeOfBreaks: 25,
+    },
+];
+export const getPreset = (presetIndex: number) => {
+    return presetValues[presetIndex];
+};
