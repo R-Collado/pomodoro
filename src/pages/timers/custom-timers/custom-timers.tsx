@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Dialog } from '../../../components/common/dialog/dialog';
 
 import { createTimer, getPreset } from '../../../utils/create-timers';
+import { toast } from 'sonner';
 
 export const CustomTimers = () => {
     const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -41,6 +42,7 @@ export const CustomTimers = () => {
         };
         createTimer(timer);
         closeDialog();
+        toast(`${timer.name} has been created`);
     };
 
     const usePreset = (presetIndex: number) => {
