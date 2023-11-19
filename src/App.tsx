@@ -11,6 +11,7 @@ import { LogoutIcon } from './assets/svgs/logout';
 import { SettingsIcon } from './assets/svgs/settings';
 import { Focus } from './pages/focus/focus';
 import { Settings } from './pages/settings/settings';
+import { Toaster } from 'sonner';
 
 function App() {
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(
@@ -90,6 +91,7 @@ function App() {
                     <Route path="/settings" element={<Settings />}></Route>
                 </Routes>
                 {/* <Home /> */}
+                <Toaster />
             </main>
         </Router>
     );
