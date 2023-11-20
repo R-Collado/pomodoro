@@ -1,10 +1,13 @@
 @use '../abstracts/' as *;
 
 .primary-nav {
+     background: $color-primary-900;
      justify-content: space-between;
      position: fixed;
 
+
      width: min(100% - var(--padding), var(--max-width));
+     z-index: 999;
 
     & .logo {
         color: $color-neutral-100;
