@@ -1,83 +1,69 @@
+import {
+    createDefaultTimers,
+    createTimerNameslist,
+} from '../../utils/create-timers';
+import {
+    checkIfDefaultTimersExist,
+    checkIfTimerNamesListExists,
+} from '../../utils/check-timers';
 import { Link } from 'react-router-dom';
 import { CustomTimers } from './custom-timers/custom-timers';
+import { useEffect, useState } from 'react';
+import { Timer } from '../../interfaces/timer.interface';
+import { formatTimerName } from '../../utils/create-timers';
 
 export const Timers = () => {
+    const [timersList, setTimersList] = useState<Timer[]>([]);
+
+    const getDefaultTimers = () => {
+        setTimersList([
+            JSON.parse(localStorage.getItem('default_timer_1') || 'null'),
+            JSON.parse(localStorage.getItem('default_timer_2') || 'null'),
+            JSON.parse(localStorage.getItem('default_timer_3') || 'null'),
+            JSON.parse(localStorage.getItem('default_timer_4') || 'null'),
+        ]);
+    };
+
+    useEffect(() => {
+        if (!checkIfDefaultTimersExist()) {
+            createDefaultTimers();
+        }
+
+        if (!checkIfTimerNamesListExists()) {
+            createTimerNameslist();
+        }
+
+        getDefaultTimers();
+    }, []);
+
     return (
         <div className="container" data-type="wide">
             <div className="timer-list | padding-block-15 even-columns cols-4">
-                <div className="timer-item | bg-neutral-700 padding-5 border-radius-1">
-                    <h3 className="timer-item__minutes | clr-neutral-100 opacity-5">
-                        25 <span>minutes</span>
-                    </h3>
-                    <p className="timer-item__description">
-                        perfect for a short work session or a simple task.
-                    </p>
-                    <Link
-                        className="button"
-                        data-type="timer-select"
-                        to="/focus/default_timer_1"
-                    >
-                        select timer
-                    </Link>
-                    <p className="timer-item__name | opacity-3 margin-block-start-6">
-                        default timer 1
-                    </p>
-                </div>
-                <div className="timer-item | bg-neutral-700 padding-5 border-radius-1">
-                    <h3 className="timer-item__minutes | clr-neutral-100 opacity-5">
-                        50 <span>minutes</span>
-                    </h3>
-                    <p className="timer-item__description">
-                        for those times when you need to work a little bit
-                        longer.
-                    </p>
-                    <Link
-                        className="button"
-                        data-type="timer-select"
-                        to="/focus/default_timer_2"
-                    >
-                        select timer
-                    </Link>
-                    <p className="timer-item__name | opacity-3 margin-block-start-6">
-                        default timer 2
-                    </p>
-                </div>
-                <div className="timer-item | bg-neutral-700 padding-5 border-radius-1">
-                    <h3 className="timer-item__minutes | clr-neutral-100 opacity-5">
-                        60 <span>minutes with 1 break</span>
-                    </h3>
-                    <p className="timer-item__description">
-                        feeling stressed? take a breake in between intervals.
-                    </p>
-                    <Link
-                        className="button"
-                        data-type="timer-select"
-                        to="/focus/default_timer_3"
-                    >
-                        select timer
-                    </Link>
-                    <p className="timer-item__name | opacity-3 margin-block-start-6">
-                        default timer 3
-                    </p>
-                </div>
-                <div className="timer-item | bg-neutral-700 padding-5 border-radius-1">
-                    <h3 className="timer-item__minutes | clr-neutral-100 opacity-5">
-                        120 <span>minutes with 2 breaks</span>
-                    </h3>
-                    <p className="timer-item__description">
-                        this should be perfect for a long working session.
-                    </p>
-                    <Link
-                        className="button"
-                        data-type="timer-select"
-                        to="/focus/default_timer_4"
-                    >
-                        select timer
-                    </Link>
-                    <p className="timer-item__name | opacity-3 margin-block-start-6">
-                        default timer 4
-                    </p>
-                </div>
+                {timersList.map((timer) => {
+                    return (
+                        <div
+                            className="timer-item | bg-neutral-700 padding-5 border-radius-1"
+                            key={timer.name}
+                        >
+                            <h3 className="timer-item__minutes | clr-neutral-100 opacity-5">
+                                {timer.targetMinutes} <span>minutes</span>
+                            </h3>
+                            <p className="timer-item__description">
+                                {timer.description}
+                            </p>
+                            <Link
+                                className="button"
+                                data-type="timer-select"
+                                to={`/focus/${formatTimerName(timer.name)}`}
+                            >
+                                select timer
+                            </Link>
+                            <p className="timer-item__name | opacity-3 margin-block-start-6">
+                                {timer.name}
+                            </p>
+                        </div>
+                    );
+                })}
                 <CustomTimers />
             </div>
         </div>

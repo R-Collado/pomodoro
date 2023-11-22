@@ -53,9 +53,10 @@ export const createDefaultTimers = () => {
         const formattedTimerName = formatTimerName(timer.name);
         localStorage.setItem(formattedTimerName, JSON.stringify(timer));
     });
+};
 
+export const createTimerNameslist = () => {
     localStorage.setItem('timers_names', JSON.stringify([]));
-    console.log('created');
 };
 
 export const createTimer = (timer: Timer) => {

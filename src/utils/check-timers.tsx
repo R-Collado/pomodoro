@@ -23,3 +23,12 @@ export const checkIfDefaultTimersExist = () => {
         return true;
     }
 };
+
+export const checkIfTimerNamesListExists = () => {
+    const timerNamesList = localStorage.getItem('timers_names');
+    if (timerNamesList) {
+        return true;
+    } else {
+        return false;
+    }
+};
