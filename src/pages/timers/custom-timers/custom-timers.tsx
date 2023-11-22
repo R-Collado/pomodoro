@@ -66,13 +66,19 @@ export const CustomTimers = () => {
         openDialog();
         setTimeout(() => {
             const form = getForm();
+            // @ts-ignore
             form[0].value = presetValues.name;
+            // @ts-ignore
             form[1].value = presetValues.description;
+            // @ts-ignore
             form[2].value = presetValues.targetMinutes;
+            // @ts-ignore
             form[3].value = presetValues.alarm;
+            // @ts-ignore
             form[4].value = presetValues.breaks;
             if (presetValues.breaks) setTimerHasBreaks(true);
             else setTimerHasBreaks(false);
+            // @ts-ignore
             form[5].value = presetValues.typeOfBreaks;
         }, 1);
     };
