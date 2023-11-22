@@ -13,6 +13,15 @@ import { Focus } from './pages/focus/focus';
 import { Settings } from './pages/settings/settings';
 import { Toaster } from 'sonner';
 
+import {
+    createDefaultTimers,
+    createTimerNameslist,
+} from './utils/create-timers';
+import {
+    checkIfDefaultTimersExist,
+    checkIfTimerNamesListExists,
+} from './utils/check-timers';
+
 function App() {
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(
         JSON.parse(localStorage.getItem('user') || '{}').isLoggedIn
@@ -32,6 +41,8 @@ function App() {
     };
 
     useEffect(() => {
+        if (!checkIfTimerNamesListExists()) createTimerNameslist();
+        if (!checkIfDefaultTimersExist()) createDefaultTimers();
         getIfUserIsLoggedIn();
     }, []);
 
