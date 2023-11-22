@@ -66,4 +66,8 @@
   &[data-shape="rounded"] {
     border-radius: 5px;
   }
+
+  &[data-shape="small-rounded"] {
+    border-radius: 3px;
+  }
 }

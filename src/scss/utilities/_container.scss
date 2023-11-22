@@ -15,6 +15,9 @@
 .container[data-type="wide"] {
   --max-width: #{$container-max-width-wide};
 }
+.container[data-type="ultra-wide"] {
+  --max-width: #{$container-max-width-ultra-wide};
+}
 
 .container[data-type="full-bleed"] {
   --max-width: 100%;
