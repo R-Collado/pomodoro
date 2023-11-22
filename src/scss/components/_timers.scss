@@ -6,6 +6,7 @@
         display: flex;
         flex-direction: column;
         padding-bottom: 0;
+        position: relative;
 
         & .timer-item__minutes {
             font-size: 3rem;
@@ -24,6 +25,19 @@
 
         & .timer-item__name {
             translate: -10px -10px;
+        }
+
+        & svg {
+            color: $color-neutral-500;
+            cursor: pointer;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            transition: color 150ms ease-out;
+
+            &:is(:hover, :focus) {
+                color: $color-accent-500;
+            }
         }
     }
 
