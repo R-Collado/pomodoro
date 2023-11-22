@@ -9,7 +9,6 @@ export const InputImageModal: React.FC<saveImage> = ({ onCloseClick }) => {
     const saveImage = async (e: any) => {
         e.preventDefault();
         const image = e.target.firstChild.files[0];
-        console.log(image);
 
         try {
             const resizedImage = await resizeFile(image);
