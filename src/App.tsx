@@ -27,7 +27,6 @@ function App() {
 
     const getIfUserIsLoggedIn = () => {
         const storedUser = JSON.parse(localStorage.getItem('user') || '{}');
-        console.log(storedUser);
 
         setIsUserLoggedIn(storedUser.isLoggedIn);
     };
