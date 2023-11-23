@@ -60,6 +60,14 @@
                 text-align: center;
             }
 
+            & .button {
+                color: $color-primary-900;
+
+                &:is(:hover, :focus) {
+                    background-color: $color-neutral-100;
+                }
+            }
+
             & .custom-timers__preset__feature-list {
                 
                 & .custom-timers__preset__feature-list__feature {
