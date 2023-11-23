@@ -38,7 +38,7 @@ export const Timers = () => {
 
     return (
         <div className="container" data-type="wide">
-            <div className="timer-list | padding-block-15 even-columns cols-4">
+            <div className="timer-list | padding-block-15 even-columns autofit">
                 {timersList.map((timer) => {
                     return (
                         <div

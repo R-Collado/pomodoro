@@ -5,6 +5,7 @@
     & .timer-item {
         display: flex;
         flex-direction: column;
+        min-width: 10rem;
         padding-bottom: 0;
         position: relative;
 
@@ -42,7 +43,7 @@
     }
 
     & .custom-timers {
-        grid-column: 1 / 5;
+        grid-column: 1 / -1;
 
         & .custom-timers__heading {
             font-size: $size-7;

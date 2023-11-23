@@ -157,7 +157,7 @@ export const CustomTimers = () => {
                 );
             })}
 
-            <div className="custom-timers | even-columns cols-5 bg-neutral-700 padding-5 border-radius-1">
+            <div className="custom-timers | even-columns autofit bg-neutral-700 padding-5 border-radius-1">
                 <div className="flex-group flex-col">
                     <h3 className="custom-timers__heading | margin-block-end-4">
                         custom timer
