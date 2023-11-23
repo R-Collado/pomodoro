@@ -51,7 +51,6 @@
     color: $color-neutral-100;
     display: grid;
     opacity: .5;
-    place-items: center;
 
     &:is(:hover, :focus) {
       opacity: 1;
