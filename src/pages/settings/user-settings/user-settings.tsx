@@ -11,6 +11,7 @@ import { PencilIcon } from '../../../assets/svgs/pencil';
 export const UserSettings = () => {
     const [isImageInputOpen, setIsImageInputOpen] = useState(false);
     const [isDialogOpen, setIsDialogOpen] = useState(false);
+    const [isInEditMode, setIsInEditMode] = useState(false);
     const profileImg = JSON.parse(localStorage.getItem('user') || '').image;
     const user: User = JSON.parse(localStorage.getItem('user') || '');
 
@@ -30,10 +31,25 @@ export const UserSettings = () => {
         setIsDialogOpen(false);
     };
 
+    const toggleEditMode = () => {
+        setIsInEditMode(!isInEditMode);
+    };
+
+    const saveProfile = () => {
+        console.log('profile save');
+        const form = document.querySelector('#personal-info-form');
+        // @ts-ignore
+        user.description = form[2].value;
+        localStorage.setItem('user', JSON.stringify(user));
+        toggleEditMode();
+    };
     return (
         <div className="settings__section user-settings | padding-10">
             <header className="flex">
-                <div className="user-settings__edit-button-div">
+                <div
+                    className="user-settings__edit-button-div"
+                    onClick={toggleEditMode}
+                >
                     <PencilIcon className="icon | clr-primary-900" />
                 </div>
                 <p
@@ -46,60 +62,149 @@ export const UserSettings = () => {
             </header>
 
             <main className="user-settings__user-info | flex">
-                <div className="user-settings__visual-info">
-                    <div className="user-settings__image-plus-socials">
-                        <img
-                            onClick={openImageInput}
-                            className="user-settings__image"
-                            src={profileImg}
-                        />
-                        <div className="socials | flex">
-                            <TwitterIcon className="user-settings__social-icon | clr-neutral-500 pointer"></TwitterIcon>
-                            <InstagramIcon className="user-settings__social-icon | clr-neutral-500 pointer" />
+                {isInEditMode ? (
+                    <>
+                        <div className="user-settings__visual-info">
+                            <div className="user-settings__image-plus-socials">
+                                <img
+                                    onClick={openImageInput}
+                                    className="user-settings__image"
+                                    src={profileImg}
+                                />
+                                <div className="socials | flex">
+                                    <TwitterIcon className="user-settings__social-icon | clr-neutral-500 pointer"></TwitterIcon>
+                                    <InstagramIcon className="user-settings__social-icon | clr-neutral-500 pointer" />
+                                </div>
+                            </div>
+                            <div className="user-settings__badges | margin-block-start-10">
+                                <p className="clr-neutral-500 text-center">
+                                    badges
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                    <div className="user-settings__badges | margin-block-start-10">
-                        <p className="clr-neutral-500 text-center">badges</p>
-                    </div>
-                </div>
-                <div className="user-settings__personal-info">
-                    <div className="user-settings__personal-info__information-bit username">
-                        <p className="user-settings__personal-info__info-bit__label | clr-neutral-500">
-                            username
-                        </p>
-                        <p className="user-settings__personal-info__info-bit__value">
-                            {user.username}
-                        </p>
-                    </div>
-                    <div className="user-settings__personal-info__information-bit email">
-                        <p className="user-settings__personal-info__info-bit__label | clr-neutral-500">
-                            email
-                        </p>
-                        <p className="user-settings__personal-info__info-bit__value">
-                            {user.email}
-                        </p>
-                    </div>
-                    <div className="user-settings__personal-info__information-bit bio">
-                        <p className="user-settings__personal-info__info-bit__label | clr-neutral-500">
-                            bio
-                        </p>
-                        <p className="user-settings__personal-info__info-bit__value">
-                            name’s {user.username}, i’ve been a ux/ui designer
-                            for 5 years, needed a change in my workflow so i
-                            started to find new ways to improve my productivity.
-                            discovered the pomodoro technique and haven’t looked
-                            back since.
-                        </p>
-                    </div>
-                    <div className="user-settings__personal-info__information-bit member-since">
-                        <p className="user-settings__personal-info__info-bit__label | clr-neutral-500">
-                            member since
-                        </p>
-                        <p className="user-settings__personal-info__info-bit__value">
-                            30 nov 2023
-                        </p>
-                    </div>
-                </div>
+                        <div className="user-settings__personal-info">
+                            <div className="user-settings__personal-info__information-bit username">
+                                <p className="user-settings__personal-info__info-bit__label | clr-neutral-500">
+                                    username
+                                </p>
+                                <p className="user-settings__personal-info__info-bit__value">
+                                    {user.username}
+                                </p>
+                            </div>
+                            <div className="user-settings__personal-info__information-bit email">
+                                <p className="user-settings__personal-info__info-bit__label | clr-neutral-500">
+                                    email
+                                </p>
+                                <p className="user-settings__personal-info__info-bit__value">
+                                    {user.email}
+                                </p>
+                            </div>
+                            <div className="user-settings__personal-info__information-bit bio">
+                                <p className="user-settings__personal-info__info-bit__label | clr-neutral-500">
+                                    bio
+                                </p>
+                                <p className="user-settings__personal-info__info-bit__value">
+                                    {user.description}
+                                </p>
+                            </div>
+                            <div className="user-settings__personal-info__information-bit member-since">
+                                <p className="user-settings__personal-info__info-bit__label | clr-neutral-500">
+                                    member since
+                                </p>
+                                <p className="user-settings__personal-info__info-bit__value">
+                                    30 nov 2023
+                                </p>
+                            </div>
+                        </div>
+                    </>
+                ) : (
+                    <>
+                        <div className="user-settings__visual-info">
+                            <div className="user-settings__image-plus-socials">
+                                <img
+                                    onClick={openImageInput}
+                                    className="user-settings__image"
+                                    src={profileImg}
+                                />
+                                <div className="socials | flex">
+                                    <TwitterIcon className="user-settings__social-icon | clr-neutral-500 pointer"></TwitterIcon>
+                                    <InstagramIcon className="user-settings__social-icon | clr-neutral-500 pointer" />
+                                </div>
+                            </div>
+                            <div className="user-settings__badges | margin-block-start-10">
+                                <p className="clr-neutral-500 text-center">
+                                    badges
+                                </p>
+                            </div>
+                        </div>
+                        <form
+                            className="user-settings__personal-info"
+                            id="personal-info-form"
+                        >
+                            <div className="user-settings__personal-info__information-bit username">
+                                <p className="user-settings__personal-info__info-bit__label | clr-neutral-500">
+                                    username
+                                </p>
+
+                                <input
+                                    type="text"
+                                    name="username"
+                                    id="username"
+                                    className="user-settings__personal-info__info-bit__input"
+                                    value={user.username}
+                                    disabled
+                                    autoComplete="username"
+                                />
+                            </div>
+                            <div className="user-settings__personal-info__information-bit email">
+                                <p className="user-settings__personal-info__info-bit__label | clr-neutral-500">
+                                    email
+                                </p>
+                                <input
+                                    type="text"
+                                    name="username"
+                                    id="email"
+                                    value={user.email}
+                                    className="user-settings__personal-info__info-bit__input"
+                                    disabled
+                                    autoComplete="email"
+                                />
+                            </div>
+                            <div className="user-settings__personal-info__information-bit bio">
+                                <p className="user-settings__personal-info__info-bit__label | clr-neutral-500">
+                                    bio
+                                </p>
+                                <textarea
+                                    name="description"
+                                    id="description"
+                                    cols={50}
+                                    rows={5}
+                                    className="user-settings__personal-info__info-bit__textarea"
+                                    defaultValue={user.description}
+                                ></textarea>
+                            </div>
+                            <div className="user-settings__personal-info__information-bit member-since">
+                                <p className="user-settings__personal-info__info-bit__label | clr-neutral-500">
+                                    member since
+                                </p>
+                                <input
+                                    className="user-settings__personal-info__info-bit__input"
+                                    type="text"
+                                    name="member-since"
+                                    disabled
+                                    value="30 nov 2023"
+                                ></input>
+                            </div>
+                            <button
+                                type="button"
+                                className="user-settings__personal-info__save-button"
+                                onClick={saveProfile}
+                            >
+                                save
+                            </button>
+                        </form>
+                    </>
+                )}
             </main>
 
             {isImageInputOpen && (
