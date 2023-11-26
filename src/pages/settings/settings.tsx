@@ -6,7 +6,7 @@ import { UserSettings } from './user-settings/user-settings';
 export const Settings = () => {
     return (
         <section className="settings">
-            <div className="container" data-type="ultra-wide">
+            <div className="container" data-type="wide">
                 <div className="settings__sections | grid">
                     <UserSettings />
                     <Integrations />
