@@ -33,6 +33,7 @@
         }
 
         & .dialog__form {
+            max-width: 100%;
             min-width: 25rem;
 
             & .dialog__form__double__input__group {
@@ -103,6 +104,16 @@
                 & + * {
                     margin-top: 1.5rem;
                 }
+            }
+        }
+
+        @media(max-width: 480px) {
+            height: 100%;
+            padding: 1em;
+            width: 100%;
+
+            & .dialog__form {
+                min-width: auto;
             }
         }
     }
