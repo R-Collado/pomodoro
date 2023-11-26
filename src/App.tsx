@@ -58,11 +58,12 @@ function App() {
                         </Link>
                         {isUserLoggedIn ? (
                             <ul className="flex | align-center">
-                                <div className="primary-nav__user-info | flex align-center pointer">
+                                <div className="primary-nav__user-info | flex align-center">
                                     <img
                                         className="primary-nav__user-info__img"
                                         src={userImg}
                                     />
+
                                     <p className="primary-nav__user-info__name">
                                         {username}
                                     </p>
