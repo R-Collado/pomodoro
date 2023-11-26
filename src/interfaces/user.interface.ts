@@ -4,4 +4,5 @@ export interface User {
     password: string;
     isLoggedIn: boolean;
     image?: string;
+    description?: string;
 }
