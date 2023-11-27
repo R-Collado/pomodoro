@@ -1,9 +1,10 @@
 import { User } from '../../interfaces/user.interface';
 import { LoginForm } from './login-form/login-form';
 import { RegisterForm } from './register-form/register-form';
+import PlaceholderUserImage from '../../assets/imgs/user-placeholder.png';
 
 export const UserForms = () => {
-    const registerUser = (event: any) => {
+    const registerUser = async (event: any) => {
         event.preventDefault();
         const username = event.target.registerUsername.value;
         const password = event.target.registerPassword.value;
@@ -16,6 +17,7 @@ export const UserForms = () => {
             username: username,
             password: password,
             isLoggedIn: true,
+            image: PlaceholderUserImage,
         };
 
         localStorage.setItem('user', JSON.stringify(user));
@@ -28,8 +30,9 @@ export const UserForms = () => {
 
         const password = event.target.loginPassword.value;
         const email = event.target.loginEmail.value;
+        console.log(event.target.loginEmail.value);
 
-        if (!checkIfUserIsRegistered('login', email, password)) {
+        if (!checkIfUserIsRegistered('login', '', email, password)) {
             console.log(
                 "that combination of email and password doesn't match with anyone on our database"
             );
@@ -48,7 +51,6 @@ export const UserForms = () => {
         password?: string
     ) => {
         const storedUser = JSON.parse(localStorage.getItem('user') || '{}');
-
         if (mode === 'register') {
             if (storedUser.username === username) {
                 console.log('that username is already registered');
@@ -65,6 +67,9 @@ export const UserForms = () => {
                     "that combination of email and password doesn't match with anyone on our database"
                 );
                 return false;
+            } else {
+                console.log('you are logged in');
+                return true;
             }
         }
 

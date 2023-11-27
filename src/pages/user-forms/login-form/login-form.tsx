@@ -10,11 +10,6 @@ export const LoginForm: React.FC<ChildProps> = (props: ChildProps) => {
         setShowPassword(!showPassword);
     };
 
-    // const saveFormAndRedirect = (e: any) => {
-    //     e.preventDefault();
-    //     window.location.href = '/';
-    // };
-
     return (
         <div className="login">
             <h2>login</h2>
@@ -35,7 +30,7 @@ export const LoginForm: React.FC<ChildProps> = (props: ChildProps) => {
                     className="form-input"
                     type={showPassword ? 'text' : 'password'}
                     name="loginPassword"
-                    id="loginUsername"
+                    id="loginPassword"
                     placeholder="********"
                 />
                 <div className="form-input show-password">
