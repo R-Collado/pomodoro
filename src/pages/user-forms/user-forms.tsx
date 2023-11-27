@@ -1,7 +1,6 @@
 import { User } from '../../interfaces/user.interface';
 import { LoginForm } from './login-form/login-form';
 import { RegisterForm } from './register-form/register-form';
-import PlaceholderUserImage from '../../assets/imgs/user-placeholder.png';
 
 export const UserForms = () => {
     const registerUser = async (event: any) => {
@@ -17,7 +16,6 @@ export const UserForms = () => {
             username: username,
             password: password,
             isLoggedIn: true,
-            image: PlaceholderUserImage,
         };
 
         localStorage.setItem('user', JSON.stringify(user));

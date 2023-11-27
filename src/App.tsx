@@ -7,6 +7,7 @@ import { UserForms } from './pages/user-forms/user-forms';
 import { useEffect, useState } from 'react';
 import { Timers } from './pages/timers/timers';
 
+import userPlaceholderImage from './assets/imgs/user-placeholder.png';
 import { LogoutIcon } from './assets/svgs/logout';
 import { SettingsIcon } from './assets/svgs/settings';
 import { Focus } from './pages/focus/focus';
@@ -61,7 +62,7 @@ function App() {
                                 <div className="primary-nav__user-info | flex align-center">
                                     <img
                                         className="primary-nav__user-info__img"
-                                        src={userImg}
+                                        src={userImg || userPlaceholderImage}
                                     />
 
                                     <p className="primary-nav__user-info__name">
