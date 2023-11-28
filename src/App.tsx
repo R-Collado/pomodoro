@@ -22,6 +22,7 @@ import {
     checkIfDefaultTimersExist,
     checkIfTimerNamesListExists,
 } from './utils/check-timers';
+import { LogoIcon } from './assets/svgs/logo';
 
 function App() {
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(
@@ -55,7 +56,7 @@ function App() {
                 <div className="container" data-type="wide">
                     <nav className="primary-nav | flex padding-block-6">
                         <Link className="logo" to="/">
-                            pm.
+                            <LogoIcon className="clr-neutral-100" />
                         </Link>
                         {isUserLoggedIn ? (
                             <ul className="flex | align-center">

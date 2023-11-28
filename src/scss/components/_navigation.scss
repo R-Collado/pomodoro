@@ -10,10 +10,9 @@
      z-index: 999;
 
     & .logo {
-        color: $color-neutral-100;
-        font-family: $ff-serif;
-        font-size: $size-6;
-        text-decoration: none;
+        cursor: pointer;
+        height: 2em;
+        width: 2em;     
     }
 
     & ul {
