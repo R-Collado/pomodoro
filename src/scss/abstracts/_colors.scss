@@ -23,6 +23,7 @@ $-clr-brown-700: hsl(20 23% 23%);
 $-clr-brown-800: hsl(18 23% 10%);
 
 // turquoise
+$-clr-turquoise-200: hsl(163, 23%, 94%);
 $-clr-turquoise-400: hsl(165, 41%, 70%);
 $-clr-turquoise-700: hsl(193, 36%, 15%);
 $-clr-turquoise-800: hsl(194, 41%, 8%);
@@ -31,6 +32,7 @@ $-clr-turquoise-900: hwb(165 6% 92%);
 $colors: (
   "neutral": (
     "100": $-clr-white,
+    "200": $-clr-turquoise-200,
     "500": $-clr-grey-500,
     "600": $-clr-grey-600,
     "700": $-clr-grey-700,
@@ -51,6 +53,7 @@ $colors: (
 
 // contextual color tokens
 $color-neutral-100: var(--neutral-100);
+$color-neutral-200: var(--neutral-200);
 $color-neutral-500: var(--neutral-500);
 $color-neutral-600: var(--neutral-600);
 $color-neutral-700: var(--neutral-700);
